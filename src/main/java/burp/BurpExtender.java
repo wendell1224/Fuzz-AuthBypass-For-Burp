@@ -63,7 +63,7 @@ public class BurpExtender implements IBurpExtender, IHttpListener,IScannerCheck{
             //                stdout.println(url);
                             int statuscode = helpers.analyzeResponse(res.getResponse()).getStatusCode();
             //                stdout.println(statuscode);
-                            if(statuscode == 200) {
+                            if(statuscode == 200 && res.getResponse()!= baseRequestResponse.getResponse()) {
                                 String issue = "可能存在权限绕过！";
                                 tags.add(url, statuscode, issue, res,res.getResponse().length);
                             }
